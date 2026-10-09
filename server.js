@@ -78,9 +78,9 @@ app.post("/api/restaurants", async (req, res) => {
     const data = clean(req.body);
     if (!data) return res.status(400).json({ message: "Invalid restaurant data." });
     const restaurant_id = await nextId();
-    const doc = { restaurant_id, ...data };
+    const doc = { restaurant_id, ...data, created_at: new Date() };
     await restaurants.insertOne(doc);
-    res.status(201).json({ restaurant_id, ...data });
+    res.status(201).json(doc);
   } catch (err) {
     res.status(500).json({ message: "Could not add the restaurant." });
   }

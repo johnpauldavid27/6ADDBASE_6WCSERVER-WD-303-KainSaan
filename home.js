@@ -8,6 +8,13 @@
   $("topList").innerHTML = top.map(itemHTML).join("");
   $("seeAll").textContent = `See all ${list.length} restaurant${list.length === 1 ? "" : "s"}`;
 
+  // Recently added: newest created_at first, falling back to restaurant_id
+  const recent = [...list]
+    .sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0) || b.restaurant_id - a.restaurant_id)
+    .slice(0, 5);
+  $("recentList").classList.add("animate");
+  $("recentList").innerHTML = recent.map(itemHTML).join("");
+
   const counts = {};
   list.forEach(r => { counts[r.cuisine] = (counts[r.cuisine] || 0) + 1; });
   $("chips").innerHTML = Object.entries(counts)

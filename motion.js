@@ -26,7 +26,7 @@
     var h = header.getBoundingClientRect(), b = bar.getBoundingClientRect();
     var road = h.height < 160 ? h.height : b.bottom - h.top + 10;   // wheels sit on this line
     var img = document.createElement("img");
-    img.src = "/images/jeepney.png";
+    img.src = "jeepney.png";
     img.alt = "";
     img.setAttribute("aria-hidden", "true");
     img.className = "jeepney";

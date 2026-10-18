@@ -1,22 +1,15 @@
-
 {
   "name": "addbase-finalproject-kainsaan-main",
   "version": "1.0.0",
-  "description": "KainSaan - A restaurant discovery and management web application powered by Node.js, Express.js, and MongoDB.",
-  "main": "src/server.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "node --env-file=.env src/server.js",
-    "seed": "mongosh --file scripts/seed.js",
+    "start": "node --env-file=.env server.js",
+    "seed": "mongosh --file seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "kainsaan",
-    "restaurant-management",
-    "mongodb",
-    "express",
-    "nodejs"
-  ],
-  "author": "J.P. David, E.L. Madla, C.M. Yabut, M. Chamdal, V.R. Cruzada",
+  "keywords": [],
+  "author": "J.P. David, E.L. Madla, C.M. Yabut",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

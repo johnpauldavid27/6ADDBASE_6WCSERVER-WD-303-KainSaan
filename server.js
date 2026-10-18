@@ -1,6 +1,5 @@
-
 /* ==========================================================================
-   server.js | BACKEND | KainSaan (6ADDBASE Final Project)
+   server.js  |  BACKEND  |  KainSaan (6ADDBASE Final Project)
 
    Express web server and REST API for the restaurant records.
    The MongoDB connection itself is in db.js (connectDB).
@@ -19,12 +18,12 @@
 const express = require("express");
 const path = require("path");
 const { ObjectId } = require("mongodb");
-const { connectDB } = require("./db"); // database connection lives in db.js
+const { connectDB } = require("./db");   // database connection lives in db.js
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-app.use(express.json()); // parse JSON request bodies
+app.use(express.json());                 // parse JSON request bodies
 
 // Collections, assigned once connectDB() succeeds (see bottom of file)
 let restaurants;
@@ -169,19 +168,9 @@ app.delete("/api/trash", async (req, res) => {
 });
 
 /* ---------- Pages and static files (HTML, CSS, JS, images) ---------- */
-
-// Frontend files are now located in the public folder.
-const publicPath = path.join(__dirname, "../public");
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
-});
-
-app.get("/admin", (req, res) => {
-  res.sendFile(path.join(publicPath, "admin.html"));
-});
-
-app.use(express.static(publicPath, { index: false }));
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+app.get("/admin", (req, res) => res.sendFile(path.join(__dirname, "admin.html")));
+app.use(express.static(__dirname, { index: false }));
 
 /* ---------- Start: connect to MongoDB, then start the web server ---------- */
 connectDB()
